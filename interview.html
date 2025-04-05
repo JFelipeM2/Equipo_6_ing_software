@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperlessCV - Entrevista</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="interview-styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="interview-script.js"></script>
+</head>
+<body>
+<div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+    <div class="logo-icon"></div>
+    <h1>PaperlessCV</h1>
+</div>
+
+<section id="entrevista" class="interview-section">
+    <div class="interview-container">
+        <h2>Crea tu CV Digital</h2>
+        <p class="subtitle">Responde a las siguientes preguntas para generar tu hoja de vida profesional</p>
+        
+        <form id="cv-form">
+            <!-- Datos personales -->
+            <div class="form-section active" id="section-1">
+                <h3>Datos Personales</h3>
+                <div class="form-group">
+                    <label for="nombre">Nombre completo*</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono*</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion">
+                </div>
+                <div class="form-group">
+                    <label for="perfil">Perfil profesional (breve descripción)*</label>
+                    <textarea id="perfil" name="perfil" rows="4" required></textarea>
+                </div>
+                <div class="buttons-container">
+                    <button type="button" class="btn primary next-btn" data-next="section-2">Siguiente</button>
+                </div>
+            </div>
+            
+            <!-- Formación académica -->
+            <div class="form-section" id="section-2">
+                <h3>Formación Académica</h3>
+                <div id="education-container">
+                    <div class="education-item">
+                        <div class="form-group">
+                            <label for="titulo">Título obtenido*</label>
+                            <input type="text" name="titulo[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="institucion">Institución*</label>
+                            <input type="text" name="institucion[]" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="fecha-inicio">Fecha inicio</label>
+                                <input type="month" name="fecha-inicio-edu[]">
+                            </div>
+                            <div class="form-group half">
+                                <label for="fecha-fin">Fecha fin</label>
+                                <input type="month" name="fecha-fin-edu[]">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn secondary add-btn" id="add-education">+ Añadir otra formación</button>
+                <div class="buttons-container">
+                    <button type="button" class="btn secondary prev-btn" data-prev="section-1">Anterior</button>
+                    <button type="button" class="btn primary next-btn" data-next="section-3">Siguiente</button>
+                </div>
+            </div>
+            
+            <!-- Experiencia laboral -->
+            <div class="form-section" id="section-3">
+                <h3>Experiencia Laboral</h3>
+                <div id="experience-container">
+                    <div class="experience-item">
+                        <div class="form-group">
+                            <label for="puesto">Puesto*</label>
+                            <input type="text" name="puesto[]" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa*</label>
+                            <input type="text" name="empresa[]" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group half">
+                                <label for="fecha-inicio-exp">Fecha inicio</label>
+                                <input type="month" name="fecha-inicio-exp[]">
+                            </div>
+                            <div class="form-group half">
+                                <label for="fecha-fin-exp">Fecha fin</label>
+                                <input type="month" name="fecha-fin-exp[]">
+                                <div class="checkbox-container">
+                                    <input type="checkbox" id="trabajo-actual" name="trabajo-actual[]">
+                                    <label for="trabajo-actual">Trabajo actual</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción de responsabilidades</label>
+                            <textarea name="descripcion[]" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn secondary add-btn" id="add-experience">+ Añadir otra experiencia</button>
+                <div class="buttons-container">
+                    <button type="button" class="btn secondary prev-btn" data-prev="section-2">Anterior</button>
+                    <button type="button" class="btn primary next-btn" data-next="section-4">Siguiente</button>
+                </div>
+            </div>
+            
+            <!-- Habilidades -->
+            <div class="form-section" id="section-4">
+                <h3>Habilidades</h3>
+                <div class="form-group">
+                    <label for="habilidades">Habilidades profesionales (separa con comas)*</label>
+                    <textarea id="habilidades" name="habilidades" rows="3" required placeholder="Ejemplo: Trabajo en equipo, Excel avanzado, Marketing digital..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="idiomas">Idiomas (indica nivel)*</label>
+                    <textarea id="idiomas" name="idiomas" rows="2" required placeholder="Ejemplo: Español (nativo), Inglés (B2), Francés (básico)..."></textarea>
+                </div>
+                <div class="buttons-container">
+                    <button type="button" class="btn secondary prev-btn" data-prev="section-3">Anterior</button>
+                    <button type="submit" class="btn primary" id="submit-btn">Generar CV</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+</body>
+</html>

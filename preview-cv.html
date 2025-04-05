@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaperlessCV - Vista Previa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="preview-styles.css">
+</head>
+<body>
+   
+<div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">
+    <div class="logo-icon"></div>
+    <h1>PaperlessCV</h1>
+</div>
+    </header>
+    
+    <section id="preview-section" class="preview-section">
+        <div class="controls-container">
+            <h2>Vista Previa de tu CV</h2>
+            <div class="buttons-container">
+                <button id="edit-cv" class="btn secondary">Editar CV</button>
+                <button id="download-cv" class="btn primary">Descargar PDF</button>
+            </div>
+        </div>
+        
+        <div class="cv-preview-container">
+            <div class="cv-document" id="cv-document">
+                <!-- El CV se generará dinámicamente aquí -->
+                <div class="cv-loading">Cargando vista previa...</div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="preview-script.js"></script>
+</body>
+</html>
